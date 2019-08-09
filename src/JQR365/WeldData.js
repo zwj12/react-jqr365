@@ -1,7 +1,11 @@
 import ArcData from './ArcData';
+import WebService from '../Robot/WebService';
 
 class WeldData {
     constructor() {
+        this.task= "T_ROB1";
+        this.module= "JQR365WeldDataModule";
+        this.numIndexNo=0;
         this.weld_speed = 0;
         this.org_weld_speed = 0;
         this.main_arc = new ArcData();
@@ -41,6 +45,18 @@ class WeldData {
         numStopIndex = strWeldData.indexOf("]", numStartIndex);
         numStopIndex =numStopIndex +1;
         this.org_arc.parse(strWeldData.substring(numStartIndex, numStopIndex))   
+    }
+
+    refreshDataFromWebServiceSync(numIndexNo) {
+        this.numIndexNo=numIndexNo;
+        var strWeldData = "";
+        if (this.numIndexNo < 10) {
+            strWeldData = WebService.GetRapidSymbolDataSync(this.task, this.module, "weld0" + this.numIndexNo)
+        } else {
+            strWeldData = WebService.GetRapidSymbolDataSync(this.task, this.module, "weld" +  this.numIndexNo)
+        }
+        //console.log(strWeldData);
+        this.parse(strWeldData);
     }
 }
 

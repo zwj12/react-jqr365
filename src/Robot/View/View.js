@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+import { version, Button } from "antd";
+// import "antd/dist/antd.css";
 import './View.css';
 import WeldParameter from '../../JQR365/WeldParameter';
+import WeldParameterTable from '../../JQR365/WeldParameterTable';
 
 class View extends Component {
   // constructor(props) {
   //   super(props);
   // }
 
-  componentDidMount() {
+  componenthidMount() {
   }
 
   componentWillUnmount() {
@@ -16,14 +20,7 @@ class View extends Component {
   render() {
     return (
       <div className="View">
-        <table>
-          <caption>LayerParameters</caption>
-          <tr>
-            <th>index</th>
-            <th>Weld Speed</th>
-          </tr>
-          <WeldParameter numIndexNo="1"/>
-        </table>
+        <WeldParameterTable></WeldParameterTable>
       </div>
     );
   }

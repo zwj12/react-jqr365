@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+// import { version, Button } from "antd";
 import './Robot.css';
 import View from './View/View';
 import StatusBar from './StatusBar/StatusBar';
+import WeldParameterTable from '../JQR365/WeldParameterTable';
 import WebService from './WebService'
+import Button from '@material-ui/core/Button';
 
 class Robot extends Component {
   constructor(props) {
