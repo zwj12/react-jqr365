@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-29 15:15:51
+ * @LastEditTime: 2019-08-10 07:50:17
+ * @LastEditors: Please set LastEditors
+ */
 import ArcData from './ArcData';
 import WebService from '../Robot/WebService';
 
@@ -25,7 +32,7 @@ class SeamData {
     }
 
     toString() {
-        var strSeamData = "[" + this.purge_time
+        let strSeamData = "[" + this.purge_time
             + "," + this.preflow_time
             + "," + this.ign_arc
             + "," + this.ign_move_delay
@@ -47,8 +54,8 @@ class SeamData {
     }
 
     parse(strSeamData) {
-        var numStartIndex = 0;
-        var numStopIndex = strSeamData.indexOf("[");
+        let numStartIndex = 0;
+        let numStopIndex = strSeamData.indexOf("[");
 
         // console.log(strSeamData);
 
@@ -123,7 +130,7 @@ class SeamData {
 
     refreshDataFromWebServiceSync(numIndexNo) {
         this.numIndexNo = numIndexNo;
-        var strSeamData = "";
+        let strSeamData = "";
         if (this.numIndexNo < 10) {
             strSeamData = WebService.GetRapidSymbolDataSync(this.task, this.module, "seam0" + this.numIndexNo)
         } else {

@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-29 16:28:15
+ * @LastEditTime: 2019-08-10 07:50:26
+ * @LastEditors: Please set LastEditors
+ */
 import WebService from '../Robot/WebService';
 
 class WeaveData {
@@ -23,7 +30,7 @@ class WeaveData {
     }
 
     toString() {
-        var strWeaveData = "[" + this.weave_shape
+        let strWeaveData = "[" + this.weave_shape
             + "," + this.weave_type
             + "," + this.weave_length
             + "," + this.weave_width
@@ -44,8 +51,8 @@ class WeaveData {
     }
 
     parse(strWeaveData) {
-        var numStartIndex = 0;
-        var numStopIndex = strWeaveData.indexOf("[");
+        let numStartIndex = 0;
+        let numStopIndex = strWeaveData.indexOf("[");
 
         // console.log(strWeaveData);
 
@@ -112,7 +119,7 @@ class WeaveData {
 
     refreshDataFromWebServiceSync(numIndexNo) {
         this.numIndexNo = numIndexNo;
-        var strWeaveData = "";
+        let strWeaveData = "";
         if (this.numIndexNo < 10) {
             strWeaveData = WebService.GetRapidSymbolDataSync(this.task, this.module, "weave0" + this.numIndexNo)
         } else {

@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-29 14:43:34
+ * @LastEditTime: 2019-08-10 07:51:07
+ * @LastEditors: Please set LastEditors
+ */
 class ArcData {
     constructor() {
         this.sched = 0;
@@ -12,7 +19,7 @@ class ArcData {
     }
 
     toString() {        
-        var strArcData = "[" + this.sched
+        let strArcData = "[" + this.sched
             + "," + this.mode
             + "," + this.voltage
             + "," + this.wirefeed
@@ -27,8 +34,8 @@ class ArcData {
     }
 
     parse(strArcData) {
-        var numStartIndex = 0;
-        var numStopIndex = strArcData.indexOf("[");
+        let numStartIndex = 0;
+        let numStopIndex = strArcData.indexOf("[");
 
         // console.log(strArcData);
 

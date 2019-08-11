@@ -2,10 +2,11 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-06 13:08:08
- * @LastEditTime: 2019-08-09 17:16:17
+ * @LastEditTime: 2019-08-11 13:59:52
  * @LastEditors: Please set LastEditors
  */
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,9 +15,12 @@ import FilledInput from '@material-ui/core/FilledInput';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
+import { Provider } from 'react-redux'
 import SeamData from './SeamData';
 import WeldData from './WeldData';
 import WeaveData from './WeaveData';
+import { UPDATE_WELDSPEED } from "../redux/actionTypes";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -38,10 +42,14 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  button: {
+    margin: theme.spacing(1),
+  },
 }));
 
 export default function WeldParameterV2() {
   const classes = useStyles();
+
 
   let seamData = new SeamData();
   let weldData = new WeldData();
@@ -54,7 +62,7 @@ export default function WeldParameterV2() {
   // weldData.refreshDataFromWebServiceSync(index);
   // weaveData.refreshDataFromWebServiceSync(index);
 
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     index: 1,
     weld_speed: weldData.weld_speed,
     mode: weldData.main_arc.mode,
@@ -87,9 +95,9 @@ export default function WeldParameterV2() {
     // values.preflow_time=event.target.value;
     // values.weave_length=event.target.value;
 
-    seamData.refreshDataFromWebServiceSync(values.index);
-    weldData.refreshDataFromWebServiceSync(values.index);
-    weaveData.refreshDataFromWebServiceSync(values.index);
+    // seamData.refreshDataFromWebServiceSync(values.index);
+    // weldData.refreshDataFromWebServiceSync(values.index);
+    // weaveData.refreshDataFromWebServiceSync(values.index);
     values.weld_speed = weldData.weld_speed;
     values.mode = weldData.main_arc.mode;
     values.current = weldData.main_arc.current;
@@ -114,8 +122,58 @@ export default function WeldParameterV2() {
     // console.log(weaveData.toString());
   };
 
+  const handleApply = (e) => {
+    weldData.index = values.index;
+    weldData.weld_speed = values.weld_speed;
+    weldData.main_arc.mode = values.mode;
+    weldData.main_arc.current = values.current;
+    weldData.main_arc.voltage = values.voltage;
+    seamData.index = values.index;
+    seamData.preflow_time = values.preflow_time;
+    seamData.postflow_time = values.postflow_time;
+    weaveData.index = values.index;
+    weaveData.weave_shape = values.weave_shape;
+    weaveData.weave_length = values.weave_length;
+    weaveData.weave_width = values.weave_width;
+    weaveData.weave_height = values.weave_height;
+    weaveData.weave_dir = values.weave_dir;
+    weaveData.weave_tilt = values.weave_tilt;
+    weaveData.weave_ori = values.weave_ori;
+    weaveData.dwell_left = values.dwell_left;
+    weaveData.dwell_center = values.dwell_center;
+    weaveData.dwell_right = values.dwell_right;
+    console.log(seamData.toString());
+    console.log(weldData.toString());
+    console.log(weaveData.toString());
+  };
+
+  const counter = useSelector(state => state.weldParameterReducer.count);
+  const state = useSelector(state => state);
+  // const counter=45;  
+  console.log(state);
+  console.log(256);
+  const weld_speed=useSelector(state => state.weldParameterReducer.weldData.weld_speed);
+  // const weld_speed=9;
+  const dispatch = useDispatch();
+
   return (
     <form className={classes.container} noValidate autoComplete="off">
+    {/* <div> */}
+      {/* <TextField
+        required
+        id="counter"
+        label="counter"
+        className={classes.textField}
+        value={counter}
+        // onChange={handleChange_index('index')}
+        type="number"
+        margin="normal"
+      /> */}
+       Count: {counter}
+      <button type="button" onClick={() => dispatch({ type: UPDATE_WELDSPEED , weld_speed:parseInt( values.weave_width)})}>
+        Increment counter
+      </button>
+      Count: {counter}
       <TextField
         required
         id="index"
@@ -135,8 +193,10 @@ export default function WeldParameterV2() {
         id="weld_speed"
         label="Weld Speed"
         className={classes.textField}
-        value={values.weld_speed}
-        onChange={handleChange('weld_speed')}
+        value={weld_speed}
+        // onChange={handleChange('weld_speed')}
+        // value={values.weld_speed}
+        // onChange={handleChange('weld_speed')}
         type="number"
         margin="normal"
         inputProps={{
@@ -375,6 +435,12 @@ export default function WeldParameterV2() {
           max: 100,
         }}
       />
+      <Button variant="contained" color="primary" className={classes.button} onClick={handleApply}>
+        Primary
+      </Button>
+      
+      
+{/* </div> */}
     </form>
   );
 }

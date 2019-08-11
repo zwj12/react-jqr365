@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-29 15:16:00
+ * @LastEditTime: 2019-08-10 07:50:49
+ * @LastEditors: Please set LastEditors
+ */
 import ArcData from './ArcData';
 import WebService from '../Robot/WebService';
 
@@ -13,7 +20,7 @@ class WeldData {
     }
 
     toString() {        
-        var strWeldData = "[" + this.weld_speed
+        let strWeldData = "[" + this.weld_speed
             + "," + this.org_weld_speed
             + "," + this.main_arc
             + "," + this.org_arc
@@ -23,8 +30,8 @@ class WeldData {
     }
 
     parse(strWeldData) {
-        var numStartIndex = 0;
-        var numStopIndex = strWeldData.indexOf("[");
+        let numStartIndex = 0;
+        let numStopIndex = strWeldData.indexOf("[");
 
         // console.log(strWeldData);
 
@@ -49,7 +56,7 @@ class WeldData {
 
     refreshDataFromWebServiceSync(numIndexNo) {
         this.numIndexNo=numIndexNo;
-        var strWeldData = "";
+        let strWeldData = "";
         if (this.numIndexNo < 10) {
             strWeldData = WebService.GetRapidSymbolDataSync(this.task, this.module, "weld0" + this.numIndexNo)
         } else {
