@@ -2,7 +2,24 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-11 12:45:27
- * @LastEditTime: 2019-08-11 12:47:47
+ * @LastEditTime: 2019-08-19 11:53:00
  * @LastEditors: Please set LastEditors
  */
-export const UPDATE_WELDSPEED = "UPDATE_WELDSPEED";
+export const UPDATE_INDEX = "UPDATE_INDEX";
+export const UPDATE_WELD_SPEED = "UPDATE_WELD_SPEED";
+export const UPDATE_MODE = "UPDATE_MODE";
+export const UPDATE_CURRENT = "UPDATE_CURRENT";
+export const UPDATE_VOLTAGE = "UPDATE_VOLTAGE";
+export const UPDATE_PREFLOW_TIME = "UPDATE_PREFLOW_TIME";
+export const UPDATE_POSTFLOW_TIME = "UPDATE_POSTFLOW_TIME";
+export const UPDATE_WEAVE_SHAPE = "UPDATE_WEAVE_SHAPE";
+export const UPDATE_WEAVE_LENGTH = "UPDATE_WEAVE_LENGTH";
+export const UPDATE_WEAVE_WIDTH = "UPDATE_WEAVE_WIDTH";
+export const UPDATE_WEAVE_HEIGHT = "UPDATE_WEAVE_HEIGHT";
+export const UPDATE_WEAVE_DIR = "UPDATE_WEAVE_DIR";
+export const UPDATE_WEAVE_TILT = "UPDATE_WEAVE_TILT";
+export const UPDATE_WEAVE_ORI = "UPDATE_WEAVE_ORI";
+export const UPDATE_DWELL_LEFT = "UPDATE_DWELL_LEFT";
+export const UPDATE_DWELL_CENTER = "UPDATE_DWELL_CENTER";
+export const UPDATE_DWELL_RIGHT = "UPDATE_DWELL_RIGHT";
+

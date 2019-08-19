@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-26 12:50:30
+ * @LastEditTime: 2019-08-19 15:59:41
+ * @LastEditors: Please set LastEditors
+ */
 class WebService {
     // constructor() {
     // }
@@ -16,6 +23,19 @@ class WebService {
         }
     }
 
+    static SetRapidSymbolDataSync(strTask, strModule, strName, strValue) {
+        var rwServiceResource = new XMLHttpRequest();
+        var strResource = "/rw/rapid/symbol/data/RAPID/" + strTask + "/" + strModule + "/" + strName + "?action=set";
+        // console.log(strResource);
+        rwServiceResource.open("POST", strResource, false);
+        rwServiceResource.send("value=" + strValue);
+        if (rwServiceResource.status === 204) {
+            // console.log("Success");
+        }else{
+            // console.log(rwServiceResource.status);
+        }
+    }
+
     static GetRWSResourceSync(resource, key) {
         var rwServiceResource = new XMLHttpRequest();
         rwServiceResource.open("GET", resource, false);
@@ -26,7 +46,7 @@ class WebService {
             return service[key];
         }
     }
-
+    
     static RequestManualModePrivileges() {
         let rwServiceResource = new XMLHttpRequest();
         let strResource = "/users/rmmp";

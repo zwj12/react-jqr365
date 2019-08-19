@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-07-29 15:16:00
- * @LastEditTime: 2019-08-10 07:50:49
+ * @LastEditTime: 2019-08-19 16:12:54
  * @LastEditors: Please set LastEditors
  */
 import ArcData from './ArcData';
@@ -13,7 +13,7 @@ class WeldData {
         this.task= "T_ROB1";
         this.module= "JQR365WeldDataModule";
         this.numIndexNo=0;
-        this.weld_speed = 0;
+        this.weld_speed = 5;
         this.org_weld_speed = 0;
         this.main_arc = new ArcData();
         this.org_arc = new ArcData();
@@ -64,6 +64,14 @@ class WeldData {
         }
         //console.log(strWeldData);
         this.parse(strWeldData);
+    }
+
+    applyDataFromWebServiceSync() {
+        if (this.numIndexNo < 10) {
+            WebService.SetRapidSymbolDataSync(this.task, this.module, "weld0" + this.numIndexNo, this.toString())
+        } else {
+            WebService.SetRapidSymbolDataSync(this.task, this.module, "weld" +  this.numIndexNo,  this.toString())
+        }
     }
 }
 

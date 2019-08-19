@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-07-26 11:33:25
- * @LastEditTime: 2019-08-11 12:43:26
+ * @LastEditTime: 2019-08-19 09:07:10
  * @LastEditors: Please set LastEditors
  */
 import "babel-polyfill";
@@ -16,6 +16,7 @@ import './index.css';
 import App from './App';
 import WeldParameterTable from "./JQR365/WeldParameterTable"
 import WeldParameterV2 from "./JQR365/WeldParameterV2"
+import WeldParameterV3 from "./JQR365/WeldParameterV3"
 import Robot from './Robot/Robot';
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -23,7 +24,7 @@ import * as serviceWorker from './serviceWorker';
   
 ReactDOM.render(
     <Provider store={store}>
-        <WeldParameterV2 />
+        <WeldParameterV3 />
     </Provider>,
     document.getElementById('root'));
 

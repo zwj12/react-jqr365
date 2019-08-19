@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-06 13:08:08
- * @LastEditTime: 2019-08-11 13:59:52
+ * @LastEditTime: 2019-08-19 11:53:33
  * @LastEditors: Please set LastEditors
  */
 import React, { useState, useReducer } from 'react';
@@ -20,7 +20,7 @@ import { Provider } from 'react-redux'
 import SeamData from './SeamData';
 import WeldData from './WeldData';
 import WeaveData from './WeaveData';
-import { UPDATE_WELDSPEED } from "../redux/actionTypes";
+import { UPDATE_WELD_SPEED } from "../redux/actionTypes";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -48,6 +48,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function WeldParameterV2() {
+  const [spacing, setSpacing] = React.useState(2);
+
   const classes = useStyles();
 
 
@@ -156,6 +158,8 @@ export default function WeldParameterV2() {
   // const weld_speed=9;
   const dispatch = useDispatch();
 
+
+  
   return (
     <form className={classes.container} noValidate autoComplete="off">
     {/* <div> */}
@@ -170,7 +174,7 @@ export default function WeldParameterV2() {
         margin="normal"
       /> */}
        Count: {counter}
-      <button type="button" onClick={() => dispatch({ type: UPDATE_WELDSPEED , weld_speed:parseInt( values.weave_width)})}>
+      <button type="button" onClick={() => dispatch({ type: UPDATE_WELD_SPEED , weld_speed:parseInt( values.weave_width)})}>
         Increment counter
       </button>
       Count: {counter}

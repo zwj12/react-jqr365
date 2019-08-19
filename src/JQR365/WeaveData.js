@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-07-29 16:28:15
- * @LastEditTime: 2019-08-10 07:50:26
+ * @LastEditTime: 2019-08-19 16:13:04
  * @LastEditors: Please set LastEditors
  */
 import WebService from '../Robot/WebService';
@@ -127,6 +127,14 @@ class WeaveData {
         }
         //console.log(strWeaveData);
         this.parse(strWeaveData);
+    }
+
+    applyDataFromWebServiceSync() {
+        if (this.numIndexNo < 10) {
+            WebService.SetRapidSymbolDataSync(this.task, this.module, "weave0" + this.numIndexNo, this.toString())
+        } else {
+            WebService.SetRapidSymbolDataSync(this.task, this.module, "weave" +  this.numIndexNo,  this.toString())
+        }
     }
 }
 

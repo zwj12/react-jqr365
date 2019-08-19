@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-07-29 15:15:51
- * @LastEditTime: 2019-08-10 07:50:17
+ * @LastEditTime: 2019-08-19 16:12:47
  * @LastEditors: Please set LastEditors
  */
 import ArcData from './ArcData';
@@ -138,6 +138,14 @@ class SeamData {
         }
         //console.log(strSeamData);
         this.parse(strSeamData);
+    }
+
+    applyDataFromWebServiceSync() {
+        if (this.numIndexNo < 10) {
+            WebService.SetRapidSymbolDataSync(this.task, this.module, "seam0" + this.numIndexNo, this.toString())
+        } else {
+            WebService.SetRapidSymbolDataSync(this.task, this.module, "seam" +  this.numIndexNo,  this.toString())
+        }
     }
 }
 
